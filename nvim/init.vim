@@ -16,6 +16,12 @@ Plug 'szw/vim-maximizer'
 "winresizer.vim - Very simple vim plugin for easy resizing of your vim windows
 Plug 'simeji/winresizer'
 
+" Auto Pairs - Insert or delete brackets, parens, quotes in pair.
+Plug 'jiangmiao/auto-pairs'
+
+" vim-gitgutter - A Vim plugin which shows git diff markers in the sign column
+Plug 'airblade/vim-gitgutter'
+
 " Initialize plugin system
 call plug#end()
 
