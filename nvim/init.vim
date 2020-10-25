@@ -22,6 +22,10 @@ Plug 'jiangmiao/auto-pairs'
 " vim-gitgutter - A Vim plugin which shows git diff markers in the sign column
 Plug 'airblade/vim-gitgutter'
 
+" fzf.vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -71,3 +75,13 @@ nmap f <Plug>(easymotion-overwin-w)
 set winminheight=0
 set winminwidth=0 
 map <C-F> :MaximizerToggle<CR>
+
+"-------------------- fzf.vim --------------------
+map <Space> :Files<CR>
+map <C-Space> :Buffers<CR>
+
+" Custom Bind Keys
+autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
+
+" Disable autocomment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
