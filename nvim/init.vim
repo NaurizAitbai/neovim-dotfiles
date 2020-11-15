@@ -26,6 +26,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" rigel color scheme
+Plug 'Rigellute/rigel'
+
+" javascript and react syntax highlighting
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+
 " Initialize plugin system
 call plug#end()
 
@@ -45,6 +52,16 @@ set number
 
 " Enable mouse
 set mouse+=a
+
+" enable 24bit true color
+set termguicolors
+
+" enable rigel theme
+syntax enable
+colorscheme rigel
+
+" Once vim-javascript is installed you enable flow highlighting
+let g:javascript_plugin_flow = 1
 
 " Window Moving
 if bufwinnr(1)
@@ -66,7 +83,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:EasyMotion_do_mapping = 0
 
 " Set the highlighting
-hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionTarget Text
 
 map f <Plug>(easymotion-bd-w)
 nmap f <Plug>(easymotion-overwin-w)
