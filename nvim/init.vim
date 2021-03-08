@@ -97,8 +97,5 @@ map <C-F> :MaximizerToggle<CR>
 map <Space> :Files<CR>
 map <C-Space> :Buffers<CR>
 
-" Custom Bind Keys
-autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
-
 " Disable autocomment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
