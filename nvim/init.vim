@@ -1,8 +1,13 @@
 " Specify a directory for pluggins
 call plug#begin('~/.config/nvim/plugged')
 
-" NERDTree - Tree File Explorer
-Plug 'scrooloose/nerdTree'
+" nnn.vim
+" File manager for vim/neovim powered by nnn
+Plug 'mcchrish/nnn.vim'
+
+" barbar.nvim
+" A neovim tabline plugin.
+Plug 'romgrk/barbar.nvim'
 
 " Easy Motion - Text Navigation
 Plug 'easymotion/vim-easymotion'
@@ -71,12 +76,41 @@ if bufwinnr(1)
     map <C-L> 5<C-W>l
 endif
 
-"-------------------- NERDTree --------------------
-" Toggle NERDTree
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+" nnn.vim
+let g:nnn#set_default_mappings = 0
+let g:nnn#command = 'nnn -d'
+nnoremap <silent> <C-b> :NnnPicker %:p:h<CR>
+let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
-" Close neovim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:nnn#action = {
+    \ '<c-t>': 'tab split',
+    \ '<c-x>': 'split',
+    \ '<c-v>': 'vsplit' }
+
+" barbar.nvim
+let bufferline = get(g:, 'bufferline', {})
+" let bufferline.auto_hide = v:true
+let bufferline.closable = v:false
+let bufferline.clickable = v:true
+let bufferline.icons = 'numbers'
+
+nnoremap <silent> <A-c> :BufferClose<CR>
+nnoremap <silent> <C-s> :BufferPick<CR>
+nnoremap <silent> <A-,> :BufferPrevious<CR>
+nnoremap <silent> <A-.> :BufferNext<CR>
+nnoremap <silent> <A-<> :BufferMovePrevious<CR>
+nnoremap <silent> <A->> :BufferMoveNext<CR>
+nnoremap <silent> <A-1> :BufferGoto 1<CR>
+nnoremap <silent> <A-2> :BufferGoto 2<CR>
+nnoremap <silent> <A-3> :BufferGoto 3<CR>
+nnoremap <silent> <A-4> :BufferGoto 4<CR>
+nnoremap <silent> <A-5> :BufferGoto 5<CR>
+nnoremap <silent> <A-6> :BufferGoto 6<CR>
+nnoremap <silent> <A-7> :BufferGoto 7<CR>
+nnoremap <silent> <A-8> :BufferGoto 8<CR>
+nnoremap <silent> <A-9> :BufferLast<CR>
+
+
 
 "-------------------- Easy Motion --------------------
 " Disable default mapping
